@@ -1,3 +1,4 @@
+import { response } from 'express'
 import { Skill } from '../models/skill.js'
 
 
@@ -29,11 +30,24 @@ function create(req, res) {
         res.redirect('/skills')
     })
 }
- 
+
+function show(req, res) {
+    Skill.findById(req.params.id)
+    .then(skill => {
+        res.render('skills/show', {
+            skill: skill
+        })
+    })
+    .catch(error => {
+        console.log(error)
+        res.redirect('/skills')
+    })
+}
 
 
 export {
     index,
     newSkill as new,
     create,
+    show,
 }

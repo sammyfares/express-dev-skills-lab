@@ -12,6 +12,9 @@ router.get('/new', skillsCtrl.new)
 // Post --localhost:3000/skills
 router.post('/', skillsCtrl.create)
 
+// GET -- localhost:3000/todos/:id
+router.get('/:id', skillsCtrl.show)
+
 export {
   router
 }
